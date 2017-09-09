@@ -9,17 +9,17 @@ class ExportFilesGenerator {
   static final String N = "\n";
   static final String R = "\r";
 
-  static void generate(File root) {
+  static void generate(File root, {bool dryRun = false}) {
     FileFilter pubsecFilter = (file) => file.getName() == PUBSEC;
 
     FilesList pubsecFiles = root.listAllChildren(fileFilter: pubsecFilter);
 
     for (File pubsec in pubsecFiles.toList()) {
-      processProject(pubsec);
+      processProject(pubsec, dryRun: dryRun);
     }
   }
 
-  static void processProject(File pubsec) {
+  static void processProject(File pubsec, {bool dryRun = false}) {
     File project_root = pubsec.parent();
     String pubsecData = pubsec.readString();
     final String name = pubsecData.split(N)[0].replaceAll("name: ", "").replaceAll(N, "").replaceAll(R, "");
@@ -43,9 +43,6 @@ class ExportFilesGenerator {
       final RelativePath split = Utils.newRelativePath(path_steps: postfix);
 // import 'package:van_mobile_api/van_mobile_api.dart'
       final String fileName = split.getLastStep();
-      if (fileName == ("main.dart")) {
-        continue;
-      }
       if (fileName == (exportFile.getName())) {
         continue;
       }
@@ -57,9 +54,11 @@ class ExportFilesGenerator {
 // L.d(exportFileContent);
     L.d("writing", exportFile);
     String data = exportFileContent.join("");
-
-//    L.d("       ", data);
-        exportFile.writeString(data);
+    if (dryRun) {
+      L.d(data);
+    } else {
+      exportFile.writeString(data);
+    }
     L.d("");
   }
 }
