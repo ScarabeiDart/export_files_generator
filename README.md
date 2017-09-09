@@ -1,4 +1,4 @@
-Recursively scans import folder for Dart projects (identifiable by pubsec.yaml file) and creates export files.
+Recursively scans target folder for Dart projects (identifiable by `pubsec.yaml` file) and creates export files.
 
 # main
 ```Dart
