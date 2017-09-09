@@ -10,7 +10,7 @@ class ExportFilesGenerator {
   static final String R = "\r";
 
   static void generate(File root) {
-    FileFilter pubsecFilter = (file) => file.getName() == "pubsec.yaml";
+    FileFilter pubsecFilter = (file) => file.getName() == PUBSEC;
 
     FilesList pubsecFiles = root.listAllChildren(fileFilter: pubsecFilter);
 
@@ -25,7 +25,7 @@ class ExportFilesGenerator {
     final String name = pubsecData.split(N)[0].replaceAll("name: ", "").replaceAll(N, "").replaceAll(R, "");
     L.d("project", project_root);
     L.d("   name", name);
-    L.d("       ", pubsec);
+//    L.d("       ", pubsec);
 
     final File lib = project_root.child("lib");
     final File exportFile = lib.child(name + ".dart");
@@ -38,7 +38,7 @@ class ExportFilesGenerator {
     for (final File dart in dartFiles.toList()) {
       final RelativePath dart_prefix = dart.getAbsoluteFilePath().getRelativePath();
       List<String> postfix = dart_prefix.steps();
-      postfix = postfix.sublist(0, prefix.size() + 1); //lib
+      postfix = postfix.sublist(prefix.size() + 1, postfix.length); //lib
 //    postfix = postfix.splitAt(prefix.size() + 1);// lib
       final RelativePath split = Utils.newRelativePath(path_steps: postfix);
 // import 'package:van_mobile_api/van_mobile_api.dart'
@@ -56,7 +56,10 @@ class ExportFilesGenerator {
     }
 // L.d(exportFileContent);
     L.d("writing", exportFile);
-    exportFile.writeString(exportFileContent.join(""));
+    String data = exportFileContent.join("");
+
+//    L.d("       ", data);
+        exportFile.writeString(data);
     L.d("");
   }
 }

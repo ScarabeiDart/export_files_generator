@@ -8,8 +8,16 @@ environment:
   sdk: '>=1.20.1 <2.0.0'
 
 dependencies:
-  scarabei: ^1.4.5
-  scarabei_reyer: ^1.4.5
+  scarabei: ^1.4.6
+  scarabei_reyer: ^1.4.6
 
 dev_dependencies:
   test: ^0.12.0
+
+dependency_overrides:
+#    scarabei:
+#      path: ../../ScarabeiDart/ScarabeiDart/scarabei
+#    scarabei_reyer:
+#      path: ../../ScarabeiDart/ScarabeiDart/scarabei_reyer
+
+

@@ -2,6 +2,14 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+    <content url="file://$MODULE_DIR$/../ScarabeiDart/scarabei">
+      <excludeFolder url="file://$MODULE_DIR$/../ScarabeiDart/scarabei/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../ScarabeiDart/scarabei/build" />
+    </content>
+    <content url="file://$MODULE_DIR$/../ScarabeiDart/scarabei_reyer">
+      <excludeFolder url="file://$MODULE_DIR$/../ScarabeiDart/scarabei_reyer/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../ScarabeiDart/scarabei_reyer/build" />
+    </content>
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
