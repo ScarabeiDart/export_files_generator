@@ -1,6 +1,6 @@
 name: export_files_generator
 description: Dart export files generator.
-version: 1.0.6
+version: 1.0.8
 homepage: https://github.com/ScarabeiDart/
 author: J Fixby <dart@jfixby.com>
 

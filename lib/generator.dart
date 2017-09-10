@@ -9,19 +9,19 @@ class ExportFilesGenerator {
   static final String N = "\n";
   static final String R = "\r";
 
-  static List<File> generate(File root, {bool dryRun = false}) {
+  static List<File> generate(File root, {bool dryRun = false, ExportFilesNamer namer = null}) {
     FileFilter pubsecFilter = (file) => file.getName() == PUBSEC;
 
     FilesList pubsecFiles = root.listAllChildren(fileFilter: pubsecFilter);
     List<File> outputExportFiles = [];
     for (File pubsec in pubsecFiles.toList()) {
-      File exportFile = processProject(pubsec, dryRun: dryRun);
+      File exportFile = processProject(pubsec, dryRun: dryRun, namer: namer);
       outputExportFiles.add(exportFile);
     }
     return outputExportFiles;
   }
 
-  static File processProject(File pubsec, {bool dryRun = false}) {
+  static File processProject(File pubsec, {bool dryRun = false, ExportFilesNamer namer = null}) {
     File project_root = pubsec.parent();
     String pubsecData = pubsec.readString();
     final String name = pubsecData.split(N)[0].replaceAll("name: ", "").replaceAll(N, "").replaceAll(R, "");
@@ -29,7 +29,11 @@ class ExportFilesGenerator {
     L.d("   name", name);
 
     final File lib = project_root.child("lib");
-    final File exportFile = lib.child(name + ".dart");
+    String exportFileName = name + ".dart";
+    if (namer != null) {
+      exportFileName = namer(name, project_root);
+    }
+    final File exportFile = lib.child(exportFileName);
 
     FileFilter dartFilter = (file) => file.extensionIs("dart");
 
@@ -68,3 +72,5 @@ class ExportFilesGenerator {
     return exportFile;
   }
 }
+
+typedef String ExportFilesNamer(String projectName, File projectRoot);
