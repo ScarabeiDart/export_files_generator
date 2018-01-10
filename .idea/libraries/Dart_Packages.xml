@@ -222,6 +222,7 @@
         <entry key="scarabei">
           <value>
             <list>
+              <option value="D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/scarabei-2.1.0/lib" />
               <option value="D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/scarabei-1.4.6/lib" />
             </list>
           </value>
@@ -387,6 +388,7 @@
       <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/pool-1.3.1/lib" />
       <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/pub_semver-1.3.2/lib" />
       <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/scarabei-1.4.6/lib" />
+      <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/scarabei-2.1.0/lib" />
       <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/scarabei_reyer-1.4.6/lib" />
       <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/shelf-0.7.0/lib" />
       <root url="file://D:/DaaNuu/PUB_CACHE/hosted/pub.dartlang.org/shelf_packages_handler-1.0.2/lib" />
